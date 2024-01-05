@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Example</title>
+	<script>
+		function loadFiles() {
+			var folder = "HTML_effect_demo";
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", folder, true);
+			xhr.responseType = "document";
+			xhr.onload = function() {
+				var files = xhr.response.getElementsByTagName("a");
+				for (var i = 0; i < files.length; i++) {
+					var file = files[i].href;
+					if (file.endsWith(".html")) {
+						var button = document.createElement("button");
+						button.innerHTML = file;
+						button.onclick = function() {
+							window.location.href = this.innerHTML;
+						}
+						document.body.appendChild(button);
+					}
+				}
+			}
+			xhr.send();
+		}
+	</script>
+</head>
+<body onload="loadFiles()">
+</body>
+</html>
