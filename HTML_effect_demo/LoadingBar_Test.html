@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+    <style>
+        #Caculprogress {
+            display: none;
+        }
+        
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <button id="Button1">Start Countdown</button>
+    <div id="Caculprogress">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <script>
+        // Function to start the countdown
+        function startCountdown() {
+            // Show the Caculprogress
+            document.getElementById("Caculprogress").style.display = "block";
+            
+            // Set the initial value to 10
+            let value = 10;
+            
+            // Update the progress bar every second
+            let interval = setInterval(() => {
+                // Decrease the value by 1
+                value--;
+                
+                // Update the progress bar width and text
+                let progressBar = document.querySelector("#Caculprogress .progress-bar");
+                progressBar.style.width = value * 10 + "%";
+                progressBar.textContent = value * 10 + "%";
+                
+                // Check if the countdown has reached 0
+                if (value === 0) {
+                    // Hide the Caculprogress
+                    document.getElementById("Caculprogress").style.display = "none";
+                    
+                    // Clear the interval
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+        
+        // Get the button element
+        let button = document.getElementById("Button1");
+        
+        // Add click event listener to the button
+        button.addEventListener("click", startCountdown);
+    </script>
+</body>
+</html>

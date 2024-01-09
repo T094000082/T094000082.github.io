@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Example</title>
+    <style>
+        #progressBar {
+            width: 200px;
+            height: 20px;
+            background-color: lightgray;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <label id="label1">13</label>
+    <label id="label2" style="display: none;"></label>    
+    <div style="display: flex;">
+        <button id="button1">Click Me</button>
+        <div id="progressBar" style="width: 250px; height: 20px; background-color: lightgray; margin-left: 10px;"></div>
+    </div>
+
+    <script>
+        var label1 = document.getElementById("label1");
+        var label2 = document.getElementById("label2");
+        var button1 = document.getElementById("button1");
+        var progressBar = document.getElementById("progressBar");
+
+        button1.addEventListener("click", function() {
+            label2.style.display = "inline";
+            var count = parseInt(label1.innerHTML);
+            var interval = setInterval(function() {
+                count--;
+                label2.innerHTML = count;
+                progressBar.style.width = ((1 - count / parseInt(label1.innerHTML)) * 100) ;
+                progressBar.style.backgroundColor = "blue"
+                progressBar.style.color = "white"
+                //progressBar.textContent 文字置中
+                
+
+                progressBar.textContent = ((1 - count / parseInt(label1.innerHTML)) * 100) + "%";
+                if (count === 0) {
+                    clearInterval(interval);
+                    progressBar.style.display = "none";
+                    label2.style.display = "none";
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

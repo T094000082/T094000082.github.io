@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>水波文特效</title>
+    <style>
+        #wave {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        #wave .wave-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wave">
+        <div class="wave-text"></div>
+    </div>
+    <br>
+    <input type="text" id="time" value="8">
+    <button onclick="start()">啟動</button>
+    <script>
+        function start() {
+            var time = document.getElementById("time").value;
+            var waveText = document.querySelector(".wave-text");
+            waveText.innerHTML = time;
+            var interval = setInterval(function() {
+                time--;
+                waveText.innerHTML = time;
+                if (time == 0) {
+                    clearInterval(interval);
+                    waveText.innerHTML = "";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

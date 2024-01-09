@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Square Water Ripple Animation with Countdown</title>
+  <style>
+    #Image1 {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+    }
+
+    #Image1:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 50px;
+      height: 50px;
+      border-radius: 0%;
+      background-color: #007bff;
+      opacity: 0.4;
+      animation: square-water-ripple 1s linear infinite;
+    }
+
+    #countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    @keyframes square-water-ripple {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="Image1">
+  <div id="countdown">10</div>
+  </div>
+  <script>
+    var count = 10;
+    var countdown = setInterval(function() {
+      count--;
+      document.getElementById("countdown").innerHTML = count;
+      if (count == 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "10";
+        count = 10;
+        countdown = setInterval(function() {
+          count--;
+          document.getElementById("countdown").innerHTML = count;
+          if (count == 0) {
+            clearInterval(countdown);
+            document.getElementById("countdown").innerHTML = "10";
+          }
+        }, 1000);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

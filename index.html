@@ -1,71 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HTML Example</title>
-    <style>
-        .water-ripple {
-          position: relative;
-          width: 100px;
-          height: 100px;
-          margin: 0 auto;
-        }
-    
-        .water-ripple:before {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          margin: auto;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background-color: #007bff;
-          opacity: 0.4;
-          animation: water-ripple 1s linear infinite;
-        }
-    
-        @keyframes water-ripple {
-          0% {
-            transform: scale(0);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 0;
-          }
-        }
-      </style>
-	<script>
-		function loadFiles() {
-            /*
-            偵測桌面上的"EFFECT DEMO"資料夾，並產生對應的按鈕。當按下按鈕時，會呼叫對應的HTML檔
-            */
-			var folder = "HTML_effect_demo";
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", folder, true);
-			xhr.responseType = "document";
-			xhr.onload = function() {
-				var files = xhr.response.getElementsByTagName("a");
-				for (var i = 0; i < files.length; i++) {
-					var file = files[i].href;
-					if (file.endsWith(".html")) {
-						var button = document.createElement("button");
-						button.innerHTML = file;
-						button.onclick = function() {
-							window.location.href = this.innerHTML;
-						}
-						document.body.appendChild(button);
-					}
-				}
-			}
-			xhr.send();
-		}
-	</script>
+    <meta charset="utf-8">
+    <title>嵌入網頁範例</title>
 </head>
-<body onload="loadFiles()">
-    <div class="water-ripple"></div>
+<body>
+    <h1>嵌入網頁範例</h1>
+    <div style="display: flex; flex-wrap: wrap;">
+        <iframe src="HTML_effect_demo/3方塊水波紋的Loading animation.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/方塊水波紋的Loading2.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/方塊水波紋的Loading3.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/LoadingBar_Test.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/LoadingBar_Test2.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/LoadingBar_Test3.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/水波紋的Loading animation.html" width="33%" height="200"></iframe>
+        <iframe src="HTML_effect_demo/水波文倒數.html" width="33%" height="200"></iframe>
+    </div>
 </body>
 </html>
